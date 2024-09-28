@@ -5,7 +5,9 @@
     "docx-pdf": "^0.0.1",
     "express": "^4.21.0",
     "fs": "^0.0.1-security",
+    "html-pdf": "^3.0.1",
     "multer": "^1.4.5-lts.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pdf-lib": "^1.17.1"
   }
 }

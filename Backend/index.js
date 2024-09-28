@@ -3,19 +3,25 @@ const multer = require('multer');
 const cors = require('cors');
 const docxToPdf = require('docx-pdf');
 const path = require("path");
-const fs = require('fs');
+const fs = require("fs");
 const app = express();
 const port = 3000;
-app.use(cors());
-// Ensure 'uploads' and 'files' directories exist
-if (!fs.existsSync(path.join(__dirname, 'uploads'))) {
-  fs.mkdirSync(path.join(__dirname, 'uploads'));
-}
-if (!fs.existsSync(path.join(__dirname, 'files'))) {
-  fs.mkdirSync(path.join(__dirname, 'files'));
-}
 
-// Multer storage setup for file uploads
+app.use(cors());
+
+// Ensure uploads and files directories exist
+const ensureDirectories = () => {
+  const uploadDir = path.join(__dirname, 'uploads');
+  const filesDir = path.join(__dirname, 'files');
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+  }
+  if (!fs.existsSync(filesDir)) {
+    fs.mkdirSync(filesDir);
+  }
+};
+ensureDirectories();
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads");
@@ -27,42 +33,53 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// Endpoint to convert DOCX to PDF
 app.post('/convertFile', upload.single('file'), (req, res) => {
   try {
     if (!req.file) {
-      return res.status(400).json({ message: "No File Uploaded" });
+      return res.status(400).json({
+        message: "No File Uploaded",
+      });
     }
 
     const inputPath = req.file.path;
-    const outputFile = `${path.parse(req.file.originalname).name}.pdf`; // Create proper .pdf file name
+    const outputFile = `${req.file.originalname}.pdf`;
     const outputPath = path.join(__dirname, "files", outputFile);
 
     // Convert DOCX to PDF
     docxToPdf(inputPath, outputPath, (err) => {
       if (err) {
-        console.error("Conversion error:", err);
-        return res.status(500).json({ message: "Error Converting DOCX to PDF" });
+        console.error("Conversion Error:", err);
+        return res.status(500).json({
+          message: "Error Converting DOCX to PDF",
+        });
       }
 
-      // Send the PDF file as a download response
+      // Send the converted PDF as a response
       res.setHeader('Content-Disposition', `attachment; filename="${outputFile}"`);
       res.setHeader('Content-Type', 'application/pdf');
-      res.download(outputPath, (downloadErr) => {
-        if (downloadErr) {
-          console.error("File download error:", downloadErr);
+      res.download(outputPath, (err) => {
+        if (err) {
+          console.error("Download Error:", err);
+          return res.status(500).json({
+            message: "Error Downloading File",
+          });
         } else {
-          console.log("File Downloaded successfully:", outputFile);
+          console.log("File Downloaded");
+
+          // Cleanup files after download
+          fs.unlinkSync(inputPath); // Remove uploaded DOCX file
+          fs.unlinkSync(outputPath); // Remove converted PDF file
         }
       });
     });
-
   } catch (error) {
-    console.error("Internal server error:", error);
-    res.status(500).json({ message: "Internal Server Error" });
+    console.error("Error in /convertFile:", error);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
   }
 });
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+  console.log(`Server listening at http://localhost:${port}`);
 });

@@ -6,7 +6,9 @@
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Features](#features)
+- 
 - [Technologies Used](#technologies-used)
+- UI
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
@@ -15,6 +17,11 @@
 
 ## Project Overview
 The **Word to PDF Converter** is a web application that allows users to convert Word documents (`.doc` and `.docx`) into PDF format easily. Built with React for the front end and Express.js for the back end, this application provides a user-friendly interface for document conversion.
+
+## UI
+![Screenshot 2024-09-28 090840](https://github.com/user-attachments/assets/5cf184c6-6031-444f-b0f8-8ecbbe39c29f)
+![Screenshot 2024-09-28 090930](https://github.com/user-attachments/assets/4bc2b364-5b46-42d3-9a0e-88af0a9a1d33)
+
 
 ## Features
 - **User-Friendly Interface**: An intuitive design for seamless file uploads and downloads.
@@ -84,13 +91,13 @@ To set up the project locally, follow these steps:
 ### POST `/convertFile`
 - **Description**: Uploads a Word document and converts it to PDF.
 - **Request Body**: 
-  - Form-data with a single file input named `file`.![Screenshot 2024-09-28 090930](https://github.com/user-attachments/assets/d4beecc6-658b-4d28-bdde-71357e1009f7)
-![Screenshot 2024-09-28 090930](https://github.com/user-attachments/assets/ab7ca2b2-1457-47af-9fdd-b09937538ed6)
+  - Form-data with a single file input named `file`.
 
 
 
 - **Response**: 
   - A PDF file of the converted document.
+    
 
 ## Contributing
 Contributions are welcome! If you have suggestions for improvements or want to add features, please fork the repository and create a pull request.

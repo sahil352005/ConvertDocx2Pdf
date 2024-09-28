@@ -6,9 +6,8 @@
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Features](#features)
-- 
 - [Technologies Used](#technologies-used)
-- UI
+- [UI] (#ui)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)

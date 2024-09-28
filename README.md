@@ -95,5 +95,5 @@ Contributions are welcome! If you have suggestions for improvements or want to a
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ---
-
+Feel Free to Connect and share your opinions..
 Feel free to adjust any parts of the README to better fit your project's style or to add any additional information!

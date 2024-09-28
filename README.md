@@ -84,7 +84,11 @@ To set up the project locally, follow these steps:
 ### POST `/convertFile`
 - **Description**: Uploads a Word document and converts it to PDF.
 - **Request Body**: 
-  - Form-data with a single file input named `file`.
+  - Form-data with a single file input named `file`.![Screenshot 2024-09-28 090930](https://github.com/user-attachments/assets/d4beecc6-658b-4d28-bdde-71357e1009f7)
+![Screenshot 2024-09-28 090930](https://github.com/user-attachments/assets/ab7ca2b2-1457-47af-9fdd-b09937538ed6)
+
+
+
 - **Response**: 
   - A PDF file of the converted document.
 

@@ -20,7 +20,8 @@ The **Word to PDF Converter** is a web application that allows users to convert 
 
 ## UI
 ![Screenshot 2024-09-28 090840](https://github.com/user-attachments/assets/5cf184c6-6031-444f-b0f8-8ecbbe39c29f)
-![Screenshot 2024-09-28 090930](https://github.com/user-attachments/assets/4bc2b364-5b46-42d3-9a0e-88af0a9a1d33)
+![Screenshot 2024-09-28 092647](https://github.com/user-attachments/assets/d3e5fdb7-e7fc-40d6-aee7-51e2a25c771c)
+
 
 
 ## Features

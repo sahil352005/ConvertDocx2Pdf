@@ -35,7 +35,7 @@ The **Word to PDF Converter** is a web application that allows users to convert 
   - React
   - Axios
   - React Icons
-  - Tailwind css
+  - Taiwind css
     
 - **Back-End**: 
   - Node.js

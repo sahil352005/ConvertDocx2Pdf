@@ -41,6 +41,7 @@ app.post('/convertFile', upload.single('file'), (req, res) => {
       });
     }
 
+    //const inputPath = req.file.path;
     const inputPath = req.file.path;
     const outputFile = `${req.file.originalname}.pdf`;
     const outputPath = path.join(__dirname, "files", outputFile);

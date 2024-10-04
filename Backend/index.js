@@ -30,7 +30,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 });
-
+//using multer for temporary storing the file on local
 const upload = multer({ storage: storage });
 
 app.post('/convertFile', upload.single('file'), (req, res) => {

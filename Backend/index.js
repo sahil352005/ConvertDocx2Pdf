@@ -76,7 +76,7 @@ app.post('/convertFile', upload.single('file'), (req, res) => {
   } catch (error) {
     console.error("Error in /convertFile:", error);
     res.status(500).json({
-      message: "Internal Server Error",
+      message: "Internal Server Error Occurs",
     });
   }
 });

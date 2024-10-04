@@ -46,7 +46,7 @@ app.post('/convertFile', upload.single('file'), (req, res) => {
     const outputFile = `${req.file.originalname}.pdf`;
     const outputPath = path.join(__dirname, "files", outputFile);
 
-    // Convert DOCX to PDF
+    // Convert DOCX to PDF using docxtopdf
     docxToPdf(inputPath, outputPath, (err) => {
       if (err) {
         console.error("Conversion Error:", err);
@@ -68,8 +68,8 @@ app.post('/convertFile', upload.single('file'), (req, res) => {
           console.log("File Downloaded");
 
           // Cleanup files after download
-          fs.unlinkSync(inputPath); // Remove uploaded DOCX file
-          fs.unlinkSync(outputPath); // Remove converted PDF file
+          fs.unlinkSync(inputPath); // Remove uploaded DOCX file from here
+          fs.unlinkSync(outputPath); // Remove converted PDF file from here
         }
       });
     });
